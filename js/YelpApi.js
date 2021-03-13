@@ -5,8 +5,8 @@ let baseURL = 'https://api.yelp.com/v3/';
 
 
 //testing location
-const latitude = 33.46945063148673
-const longitude = -117.1231696967713
+// const latitude = 33.46945063148673
+// const longitude = -117.1231696967713
 
 function getBusinessByLatLon(lat, lon) {
     const business = `businesses/search?latitude=${lat}&longitude=${lon}`
