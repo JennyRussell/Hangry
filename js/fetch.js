@@ -4,32 +4,24 @@ const CLIENT_ID = "dyeKawOLsqUZdRX7B35S4Q";
 
 
 function getApi() {
-  //GET https://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972
-
-    var requestUrl = 'https://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972';
-    //var requestUrl = `https://api.yelp.com/v3/businesses/search?accessToken=${API_KEY}&term=deli`
+    var requestUrl = '"https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972';
+  
 
 
 
-    fetch(requestUrl, {mode: 'no-cors',  headers: {
-      "Authorization": `Bearer` + API_KEY,
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }, })
-      .then(function (response) {
-        console.log(response.status)
-          if(response.status == 200){
-            return response.json();
-          } else {
-              return;
-          }
+// AJAX call requires a third party library, jQuery
+$.ajax({
+  headers: {
+    'Authorization': 'Bearer API_KEY,',
+  },
+  mode: 'no-cors',
+  url: requestUrl,
+  method: 'GET',
 
-        
-      })
-      .then(function (data) {
-        console.log(data)
-        //displayData(data);
-      });
-  }
+}).then(function (response) {
+  console.log(response);
+});
+}
 
 
 

@@ -1,7 +1,7 @@
 const API_KEY = "hhe7kT5DSjU6fJ1Y-vy5b8XRAh-JF8H1DqYugVodo9Vdp4xEbbmlVFahbdsdRk90-tNM_7dUnFtQ3oyY94Imfsbu9umTF_5sp-xhO8U0JtfhQxZwszHq3kTeeihMYHYx";
 const CLIENT_ID = "dyeKawOLsqUZdRX7B35S4Q";
 
-let baseURL = 'https://api.yelp.com/v3/';
+let baseURL = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/';
 
 
 //testing location
@@ -42,7 +42,7 @@ async function baseFetch(baseURL, callback) {
     var req = new Request(baseURL, {
         method: 'GET',
         headers: new Headers({
-            'Authorization': 'Bearer ' + API_KEY,
+            'Authorization': "Bearer" + API_KEY,
             'Content-Type': 'application/json'
         })
 
