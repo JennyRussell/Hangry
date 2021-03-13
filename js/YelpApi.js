@@ -1,3 +1,5 @@
+// YELP API is specific for ONLY the YELP Rest API and should not contain any jquery or dom editing.
+
 const API_KEY = "27pO528tZIXKQa99yJd-KLZ93h6DM1t4kSykH9UkZ0IdbsEc_ELP1wmYNi54Y83892iN20ex53HQtokoXHVb1aa3_qRVUI47VIUT7MNinJNLLpcggtNv1atWwrVKYHYx";
 const CLIENT_ID = "cdcxCdVgpGDur80CjemkRg";
 
@@ -15,31 +17,6 @@ function getBusinessByLatLon(lat, lon, callback) {
     return baseFetch(businessLatLon, callback)
 }
 
-function getLatLong() {
-    $(document).ready(function() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
-        } else {
-            alert('It seems like Geolocation, which is required for this page, is not enabled in your browser.');
-        }
-    });
-
-
-
-    function successFunction(position) {
-        let lat = position.coords.latitude;
-        let long = position.coords.longitude;
-        // alert('Your latitude is :' + lat + ' and longitude is ' + long);
-        document.getElementById("long").innerText = lat;
-        document.getElementById("lat").innerText = long;
-    }
-
-    function errorFunction(position) {
-        alert('Error!');
-    }
-};
-
-
 function testApi() {
     getBusinessByLatLon(latitude, longitude, myCallBack);
 }
@@ -49,8 +26,6 @@ function myCallBack(json) {
 }
 
 testApi();
-
-
 
 
 async function baseFetch(baseURL, callback) {
