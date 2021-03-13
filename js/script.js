@@ -24,7 +24,7 @@ function getLatLong() {
 };
 
 function myCallBack2(response) {
-    $("#business").text(response.businesses[0].alias);
+    $("#business").text(response.businesses[0].name);
     $("#displayPhone").text(response.businesses[0].display_phone);
     console.log(response);
 }

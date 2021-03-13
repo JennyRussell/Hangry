@@ -3,11 +3,11 @@
 const API_KEY = "27pO528tZIXKQa99yJd-KLZ93h6DM1t4kSykH9UkZ0IdbsEc_ELP1wmYNi54Y83892iN20ex53HQtokoXHVb1aa3_qRVUI47VIUT7MNinJNLLpcggtNv1atWwrVKYHYx";
 const CLIENT_ID = "cdcxCdVgpGDur80CjemkRg";
 
-let baseURL = 'https://api.yelp.com/v3/';
+let baseURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/";
 
-//testing location
-const latitude = 33.46945063148673
-const longitude = -117.1231696967713
+// //testing location
+// const latitude = 33.46945063148673
+// const longitude = -117.1231696967713
 
 
 function getBusinessByLatLon(lat, lon, callback) {
@@ -17,15 +17,15 @@ function getBusinessByLatLon(lat, lon, callback) {
     return baseFetch(businessLatLon, callback)
 }
 
-function testApi() {
-    getBusinessByLatLon(latitude, longitude, myCallBack);
-}
+// function testApi() {
+//     getBusinessByLatLon(latitude, longitude, myCallBack);
+// }
 
-function myCallBack(json) {
-    console.log(json);
-}
+// function myCallBack(json) {
+//     console.log(json);
+// }
 
-testApi();
+// testApi();
 
 
 async function baseFetch(baseURL, callback) {
