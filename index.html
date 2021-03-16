@@ -12,19 +12,48 @@
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     </head>
 
     <body>
+    <nav id="nav" class="bg-yellow-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img class="h12 w-12" src="./images/hamburgerLogo.png" alt="hamburger">
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <a href="#" class="bg-red-600 text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+
+                            <a href="#"
+                                class="text-gray-900 hover:bg-red-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Restaurants</a>
+
+                            <a href="#"
+                                class="text-gray-900 hover:bg-red-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Favorites</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <h1 id="hangry">Hangry</h1>
+            </div>
+        </div>
+    </nav>
+  
         
-        <h1 id="hangry">Hangry</h1>
+
         <div id="title-div">
-        <h1 id="business">Business</h1>
-        <h1 id="displayPhone">Phone</h1>
+        <h1 id="business"></h1>
+        <h1 id="displayPhone"></h1>
     </div>
-        <img src="" id="business-image" alt="business main image">
+        <img src="" id="business-image">
         <div id="button-div">
-        <button id="next-button" type="button">X</button>
-        <button id="favorite-button" type="button">Heart</button>
+        <button id="next-button" type="button"><span style="font-size: 48px;"><i class="fas fa-times size 7x"></i></span></button>
+        <button id="favorite-button" type="button"><span style="font-size: 48px;"><i class="fas fa-heart"></i></span></button>
     </div>
 
 

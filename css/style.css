@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+
 #hangry {
-    font-weight: 900;
-    font-size: 200%;
+    font-size: 300%;
     text-align: center;
+    color: #DE0001;
+    font-family: 'Modak', cursive;
 }
 
 #business{
     float: left;
+    font-size: 200%;
+}
+
+#displayPhone {
+    font-size: 200%;
 }
 
 #title-div{
@@ -25,10 +33,10 @@
 #favorite-button {
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 25px;
     text-align: center;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 20px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
