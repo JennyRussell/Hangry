@@ -5,36 +5,30 @@ const CLIENT_ID = "cdcxCdVgpGDur80CjemkRg";
 
 let baseURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/";
 
-// //testing location
-// const latitude = 33.46945063148673
-// const longitude = -117.1231696967713
 
+let id = "wAVpMs0QtdzFFGhhjZAKHA";
 
-function getBusinessByLatLon(lat, lon, callback) {
-    const business = `businesses/search?latitude=${lat}&longitude=${lon}`
-    let businessLatLon = `${baseURL}${business}`
+function getBusinessById(id) {
+    const business = `businesses/${id}`
+    let businessId = `${baseURL}${business}`
     console.log("Hello");
-    return baseFetch(businessLatLon, callback)
+    return baseFetch(callback)
+    console.log(callback);
 }
 
-// function testApi() {
-//     getBusinessByLatLon(latitude, longitude, myCallBack);
-// }
-
-// function myCallBack(json) {
-//     console.log(json);
-// }
-
-// testApi();
+// getBusinessById(id, );
 
 
 async function baseFetch(baseURL, callback) {
+    const business = `businesses/${id}`
+    let businessId = `${baseURL}${business}`
     console.log(baseURL);
-    var req = new Request(baseURL, {
+    let req = new Request(businessId, {
         method: 'GET',
         headers: new Headers({
             'Authorization': 'Bearer ' + API_KEY,
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "X-Requested-With": "XMLHttpRequest",
         })
 
     });
@@ -48,10 +42,11 @@ async function baseFetch(baseURL, callback) {
             }
         })
         .then((jsonData) => {
-            callback(jsonData);
+            myCallBack(jsonData);
         })
         .catch((err) => {
             console.log(err);
         });
 
 }
+baseFetch(baseURL);
