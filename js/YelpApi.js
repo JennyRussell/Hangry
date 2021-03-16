@@ -1,16 +1,25 @@
 // YELP API is specific for ONLY the YELP Rest API and should not contain any jquery or dom editing.
 var businesses = [];
-const API_KEY = "27pO528tZIXKQa99yJd-KLZ93h6DM1t4kSykH9UkZ0IdbsEc_ELP1wmYNi54Y83892iN20ex53HQtokoXHVb1aa3_qRVUI47VIUT7MNinJNLLpcggtNv1atWwrVKYHYx";
+const API_KEY =
+    "27pO528tZIXKQa99yJd-KLZ93h6DM1t4kSykH9UkZ0IdbsEc_ELP1wmYNi54Y83892iN20ex53HQtokoXHVb1aa3_qRVUI47VIUT7MNinJNLLpcggtNv1atWwrVKYHYx";
 const CLIENT_ID = "cdcxCdVgpGDur80CjemkRg";
 
-let baseURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/";
-
+let baseURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3";
 
 let id = "wAVpMs0QtdzFFGhhjZAKHA";
 
-function getBusinessById(Id, callback) {
-    const business = `businesses/search?${Id}`
-    let businessId = `${baseURL}${business}`
+
+function myCallBack(response) {
+    console.log(response);
+    $("#business-image").attr("src", response.image_url);
+    $("#displayPhone").text(response.display_phone);
+    $("#business").text(response.name);
+    console.log(response);
+}
+
+function getBusinessByLatLon(lat, lon, callback) {
+    let business = `businesses/search?latitude=${lat}&longitude=${lon}`
+    let businessLatLon = `${baseURL}${business}`
     console.log("Hello");
     return baseFetch(businessLatLon, callback)
 }
@@ -23,20 +32,25 @@ function getBusinessByLatLon(lat, lon, callback) {
 }
 
 
+function getBusinessById(id) {
+
+    let businessId = `${baseURL}/businesses/${id}`;
+    console.log("Hello");
+    return baseFetch(callback);
+    console.log(callback);
+}
 
 async function baseFetch(baseURL, callback) {
-    const business = `businesses/${id}`
-    let businessId = `${baseURL}${business}`
+    let businessId = `${baseURL}/businesses/${id}`;
+    console.log("the url is", businessId)
     console.log(baseURL);
     let req = new Request(businessId, {
-        method: 'GET',
+        method: "GET",
         headers: new Headers({
-            'Authorization': 'Bearer ' + API_KEY,
-            'Content-Type': 'application/json',
+            Authorization: "Bearer " + API_KEY,
+            "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest",
-        })
-
-
+        }),
     });
 
     fetch(req)
@@ -49,15 +63,17 @@ async function baseFetch(baseURL, callback) {
             }
         })
         .then((jsonData) => {
-            myCallBack(jsonData);
+
             console.log("the reutnred json is", jsonData)
             businesses = jsonData;
             callback(jsonData, 0);
+            businesses = jsonData;
+            // callback(jsonData);
+            myCallBack(jsonData);
         })
         .catch((err) => {
             console.log(err);
         });
-
 }
 
 

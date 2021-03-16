@@ -1,4 +1,4 @@
 # Hangry
 
 
-I enjoy JavaScript because it utilizes both Functional programming and Object-oriented programming.
+A tinder for finding restaurants open near you.
