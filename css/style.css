@@ -1,0 +1,49 @@
+#hangry {
+    font-weight: 900;
+    font-size: 200%;
+    text-align: center;
+}
+
+#business{
+    float: left;
+}
+
+#title-div{
+    display: flex;
+    justify-content: space-around;
+}
+
+#business-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: 400px;
+}
+
+#next-button,
+#favorite-button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 22px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#favorite-button {
+    background-color: #DE0001;
+}
+
+
+#next-button {
+    background-color: #FEDA15;
+}
+
+#button-div {
+    display: flex;
+    justify-content: center;
+}

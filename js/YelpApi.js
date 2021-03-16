@@ -1,5 +1,5 @@
 // YELP API is specific for ONLY the YELP Rest API and should not contain any jquery or dom editing.
-
+var businesses = [];
 const API_KEY = "27pO528tZIXKQa99yJd-KLZ93h6DM1t4kSykH9UkZ0IdbsEc_ELP1wmYNi54Y83892iN20ex53HQtokoXHVb1aa3_qRVUI47VIUT7MNinJNLLpcggtNv1atWwrVKYHYx";
 const CLIENT_ID = "cdcxCdVgpGDur80CjemkRg";
 
@@ -24,23 +24,24 @@ function getBusinessByLatLon(lat, lon, callback) {
 // function myCallBack(json) {
 //     console.log(json);
 // }s
-s
+
 // testApi();s
-s
-s
-async function baseFetch(baseURLs, callback) {
-    console.log(baseURL);s
-    var req = new Request(baseURsL, {
-        method: 'GET',s
-        headers: new Headers({s
-            'Authorization': "Besarer" + API_KEY,
-            'Content-Type': 'application/json'
+
+
+async function baseFetch(baseURL, callback) {
+    console.log(baseURL);
+    var req = new Request(baseURL, {
+        method: 'GET',
+        headers: new Headers({
+            'Authorization': "Bearer " + API_KEY,
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
         })
 
 
     });
 
-    fetch(req, { mode: 'no-cors'})
+    fetch(req)
         .then((response) => {
             if (response.ok) {
                 return response.json();
@@ -49,6 +50,7 @@ async function baseFetch(baseURLs, callback) {
             }
         })
         .then((jsonData) => {
+            businesses = jsonData;
             callback(jsonData);
         })
         .catch((err) => {
