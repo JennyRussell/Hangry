@@ -17,6 +17,14 @@ function getBusinessByLatLon(lat, lon, callback) {
     return baseFetch(businessLatLon, callback)
 }
 
+
+function getBusinessById(Id, callback) {
+    const business = `businesses/search?${Id}`
+    let businessId = `${baseURL}${business}`
+    console.log("Hello");
+    return baseFetch(businessLatLon, callback)
+}
+
 // function testApi() {
 //     getBusinessByLatLon(latitude, longitude, myCallBack);
 // }
