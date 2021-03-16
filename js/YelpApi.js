@@ -52,17 +52,41 @@ async function baseFetch(baseURL, callback) {
     fetch(req)
         .then((response) => {
             if (response.ok) {
+                console.log("fetch is okay, returning json")
                 return response.json();
             } else {
                 throw new Error(response.status);
             }
         })
         .then((jsonData) => {
+            console.log("the reutnred json is", jsonData)
             businesses = jsonData;
-            callback(jsonData);
+            callback(jsonData, 0);
         })
         .catch((err) => {
             console.log(err);
         });
 
 }
+
+
+// the entry point to our application
+$(document).ready(function() {
+    console.log("hey, we are at the starting point of our app")
+    if (navigator.geolocation) {
+        console.log("we have an geolocator!")
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("the current postion is", position.coords.latitude)
+            let lat = position.coords.latitude;
+            let long = position.coords.longitude;
+
+            $("#long").text(long);
+            $("#lat").text(lat);
+            getBusinessByLatLon(lat, long, loadRest)
+
+        }, errorFunction);
+
+    } else {
+        alert('It seems like Geolocation, which is required for this page, is not enabled in your browser.');
+    }
+});
