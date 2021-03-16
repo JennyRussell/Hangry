@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
-
 #hangry {
     font-size: 300%;
     text-align: center;
@@ -8,7 +7,7 @@
 }
 
 #business,
-#distance{
+#distance {
     float: left;
     font-size: 200%;
 }
@@ -17,7 +16,7 @@
     font-size: 200%;
 }
 
-#title-div{
+#title-div {
     display: flex;
     justify-content: space-around;
 }
@@ -46,7 +45,6 @@
 #favorite-button {
     background-color: #DE0001;
 }
-
 
 #next-button {
     background-color: #FEDA15;
