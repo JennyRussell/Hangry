@@ -37,6 +37,23 @@ async function getBusinessById(id, callbackFunction) {
 }
 
 //*
+/* src= https://www.yelp.com/developers/documentation/v3/business_reviews
+/* GET Reviews by Business ID
+/* @param {id} id the specific ID of the business -- cannot be null
+/* @param {callbackFunction} callback the function the data response should return to... typically to update your UI.
+/ */
+async function getReviewsByBusinessId(id, callbackFunction) {
+    if (id === undefined || id === "" || id === null) {} {
+        let businessIdURL = `${baseURL}businesses/${id}/reviews`;
+        return baseFetchByGET(businessIdURL, callbackFunction);
+    }
+}
+
+
+
+
+
+//*
 /* @param {completeURL} This is the complete URL, for example:
 /* https://api.yelp.com/v3/businesses/wAVpMs0QtdzFFGhhjZAKHA"  <--- returns specific business
 /* OR
