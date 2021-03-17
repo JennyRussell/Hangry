@@ -9,15 +9,14 @@ let baseURL = `${corsAnywhere}https://api.yelp.com/v3/`;
 let id = "wAVpMs0QtdzFFGhhjZAKHA";
 
 
-function getBusinessByLatLon(lat, lon, callback) {
+function getBusinessByLatLon(lat, lon, callback, errorCallback) {
     if (lat && lon) {
         let business = `businesses/search?latitude=${lat}&longitude=${lon}`;
         let businessLatLon = `${baseURL}${business}`;
-        return baseFetchByGET(businessLatLon, callback);
+        return baseFetchByGET(businessLatLon, callback, errorCallback);
     } else {
         console.log("Lat and Long are required", lat, lon);
     }
-
 }
 
 
@@ -47,31 +46,22 @@ async function getBusinessById(id, callbackFunction) {
 // so do not attempt two signatures in the function, such as callback(jsonData, 0). Only callback(jsonData) will work.
 // Use the 0 in the callback itself. 
 / */
-function baseFetchByGET(completeURL, callback) {
-    console.log(completeURL);
-    // build a request with the URL and add the headers including the Authorization
-    let request = new Request(completeURL, {
-        method: "GET",
-        headers: new Headers({
-            Authorization: "Bearer " + API_KEY,
-            "Content-Type": "application/json",
-            "X-Requested-With": "XMLHttpRequest",
-        }),
-    });
-    // fetch using the request above. Notice the naming (Request, Response)
-    fetch(request)
-        .then(response => response.json())
-        .then(responseJson => {
-            //the signature is named responseJson to know its the same response from the promose (.then()) above
-            // but then returned as the json.
-            callback(responseJson)
-        })
-        .catch(err => {
-            //this error is thrown above in the `throw new Error(response);`
-            // log it, and then re-throw it so it shows up better in chrome.
-            console.log(err);
-            throw err;
-        });
+function baseFetchByGET(completeURL, successCallback, errorCallback) {
+    $.ajax({
+        type: 'GET',
+        url: completeURL,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('Authorization', "Bearer " + API_KEY);
+            xhr.setRequestHeader('Content-Type', "application/json");
+            // xhr.setRequestHeader('XMLHttpRequest', "Accept");
+        },
+        success: function(response) {
+            successCallback(response);
+        },
+        error: function(response) {
+            errorCallback(response.responseJSON);
+        }
+    })
 }
 
 // Leaving this here. This YelpAPI should never include any Jquery. It is strictly a YelpAPI.
