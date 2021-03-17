@@ -1,6 +1,8 @@
 let currentIndex = 0;
 let favoritesArray = [];
 var businessesArray = [];
+//this is a fix to prevent loadRest to keep adding event listeners;
+var didListenersLoad = false;
 
 const businessTitleEl = document.getElementById("business");
 const businessPhoneEl = document.getElementById("displayPhone");
@@ -29,22 +31,27 @@ function loadRest(response) {
     //moved index logic to 0 here, as the response json returns a list response. This can be manipulated in the callback for your specific UI.
     updateBusinessInformation(businesses);
 
-    //this is an event lsitener for the favorite button
-    favoriteButtonEl.addEventListener("click", function() {
-        // businesses[currentIndex]
-        favoritesArray.push(toBusinessObject(businesses[currentIndex]));
-        saveToLocalStorage('favorites', favoritesArray);
-        currentIndex++;
-        //will load the next item from the list array
-        loadRest(response)
-    });
+    if (!didListenersLoad) {
 
-    //this is an event lsitener for the next button
-    nextButtonEl.addEventListener("click", function() {
-        currentIndex++;
-        //will load the next item from the list array
-        loadRest(response)
-    })
+        //this is an event lsitener for the favorite button
+        favoriteButtonEl.addEventListener("click", function() {
+            // businesses[currentIndex]
+            favoritesArray.push(toBusinessObject(businesses[currentIndex]));
+            saveToLocalStorage('favorites', favoritesArray);
+            ++currentIndex;
+            //will load the next item from the list array
+            loadRest(response)
+        });
+
+        //this is an event lsitener for the next button
+        nextButtonEl.addEventListener("click", function() {
+            currentIndex++;
+            //will load the next item from the list array
+            loadRest(response)
+        })
+        didListenersLoad = true;
+    }
+
 }
 
 function updateBusinessInformation(businesses) {
