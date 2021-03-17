@@ -4,7 +4,13 @@ let timer;
 
 let favoriteHtml;
 
+function imAwesome(response) {
+
+    console.log(response);
+}
+
 function updateFavoriteListItem(favorite) {
+    console.log(favorite.id)
     $("#business-image").attr("src", favorite.img_url);
     $("#business-image").attr("id", "business-image" + faveIndex);
     $("#displayPhone").text(favorite.phone);
@@ -15,18 +21,41 @@ function updateFavoriteListItem(favorite) {
 
     $("#displayPhone").text(favorite.phone);
     $("#displayPhone").attr("id", "displayPhone" + faveIndex);
+
+    $("#rating").text(favorite.rating);
+    $("#rating").attr("id", "rating" + faveIndex);
+    appendStarRating(favorite.rating)
+    let ratingEl = $("#rating" + faveIndex)
+    appendStarRating(favorite.rating, ratingEl);
     faveIndex++;
-}
-
-function justForFun() {
-    // timer = setInterval(function() {
-
-
-    //     console.log(favorites[faveIndex]);
-    //     // getBusinessById(favorites[faveIndex].id, updateFavoritesCallback);
-    // }, 3000)
 
 }
+
+function appendStarRating(starRating, ratingEl) {
+    console.log(starRating);
+
+    // Get the value
+    var val = parseFloat(starRating);
+    // Make sure that the value is in 0 - 5 range, multiply to get width
+    var size = Math.max(0, (Math.min(5, val))) * 16;
+    // Create stars holder
+    // .append($("<i class='fas fa-star'></i>"));
+    var $span = $('<span />').width(size);
+    // Replace the numerical value with stars
+
+    i = 0;
+    while (i < $(this).attr('data-starCount')) {
+        ratingEl.append('<i class="fa fa-star">');
+        i++
+    };
+
+    // Check for and add a half star
+    if (ratingEl.attr('data-starCount') % 1 !== 0) {
+        ratingEl.append('<i class="fa fa-star-half">');
+    }
+}
+
+
 
 function loadFavoritesFromLocalStorage() {
     favorites = getFromLocalStorage("favorites");
