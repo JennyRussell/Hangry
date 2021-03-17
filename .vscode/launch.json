@@ -1,12 +1,12 @@
 {
     "version": "0.1.0",
     "configurations": [
-       
         {
-            "name": "Launch index.html",
+            "name": "Launch localhost",
             "type": "chrome",
             "request": "launch",
-            "file": "${workspaceFolder}/index.html"
-        },
+            "url": "http://localhost:8080/index.html",
+            "webRoot": "${workspaceFolder}/"
+        }
     ]
 }
