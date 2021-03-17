@@ -32,26 +32,21 @@ function updateFavoriteListItem(favorite) {
 }
 
 function appendStarRating(starRating, ratingEl) {
-    console.log(starRating);
 
-    // Get the value
-    var val = parseFloat(starRating);
-    // Make sure that the value is in 0 - 5 range, multiply to get width
-    var size = Math.max(0, (Math.min(5, val))) * 16;
-    // Create stars holder
-    // .append($("<i class='fas fa-star'></i>"));
-    var $span = $('<span />').width(size);
-    // Replace the numerical value with stars
 
-    i = 0;
-    while (i < $(this).attr('data-starCount')) {
-        ratingEl.append('<i class="fa fa-star">');
-        i++
-    };
+    let fullStar = starRating.toString().split(".")[0];
+    let halfStar = starRating.toString().split(".")[1];
 
-    // Check for and add a half star
-    if (ratingEl.attr('data-starCount') % 1 !== 0) {
-        ratingEl.append('<i class="fa fa-star-half">');
+
+    console.log(fullStar);
+    if (fullStar) {
+        for (let i = 0; i < fullStar; i++) {
+            $(ratingEl).append($('<i class="fa fa-star">'));
+        }
+    }
+    if (halfStar) {
+        console.log(halfStar);
+        $(ratingEl).append($('<i class="fa fa-star-half">'));
     }
 }
 
