@@ -11,6 +11,13 @@ function imAwesome(response) {
 
 function updateFavoriteListItem(favorite) {
     console.log(favorite.id)
+
+
+    $("#favorite-container").attr("id", favorite.id);
+    $(`#${favorite.id}`).click(function() {
+        window.location.href = `http://localhost:8080/details.html?businessId=${favorite.id}`;
+    });
+
     $("#business-image").attr("src", favorite.img_url);
     $("#business-image").attr("id", "business-image" + faveIndex);
     $("#displayPhone").text(favorite.phone);
