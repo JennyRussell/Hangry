@@ -10,16 +10,23 @@
 #business,
 #distance{
     float: left;
-    font-size: 200%;
+    font-size: 150%;
 }
 
 #displayPhone {
-    font-size: 200%;
+    font-size: 150%;
 }
 
 #title-div{
     display: flex;
-    justify-content: space-around;
+    justify-content:space-between;
+    position: relative;
+    padding: 10px 20px;
+}
+
+#distance{
+    position: absolute;
+    left: 47%;
 }
 
 #business-image {
@@ -27,7 +34,7 @@
     margin-left: auto;
     margin-right: auto;
     width: auto;
-    height: 400px;
+    height: 350px;
 }
 
 #next-button,
