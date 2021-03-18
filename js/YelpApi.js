@@ -11,7 +11,7 @@ let id = "wAVpMs0QtdzFFGhhjZAKHA";
 
 function getBusinessByLatLon(lat, lon, callback) {
     if (lat && lon) {
-        let business = `businesses/search?latitude=${lat}&longitude=${lon}`;
+        let business = `businesses/search?latitude=${lat}&longitude=${lon}&limit=50&open_now=true`;
         let businessLatLon = `${baseURL}${business}`;
         return baseFetchByGET(businessLatLon, callback);
     } else {
@@ -64,7 +64,7 @@ function baseFetchByGET(completeURL, callback) {
         .then(responseJson => {
             //the signature is named responseJson to know its the same response from the promose (.then()) above
             // but then returned as the json.
-            callback(responseJson)
+            callback(responseJson);
         })
         .catch(err => {
             //this error is thrown above in the `throw new Error(response);`
