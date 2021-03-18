@@ -20,19 +20,23 @@
 #title-div{
     display: flex;
     justify-content:space-between;
+    flex-direction: column;
     position: relative;
-    padding: 10px 20px;
+    padding: 10px;
+    margin: 0px 10px;
 }
-
+/* 
 #distance{
     position: absolute;
     left: 47%;
-}
+} */
 
 #business-image {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
     width: auto;
     height: 350px;
 }
@@ -41,22 +45,31 @@
 #favorite-button {
     border: none;
     color: white;
-    padding: 10px 25px;
+    padding: 10px 35px;
     text-align: center;
     text-decoration: none;
-    font-size: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 18px;
+    margin-left: 25px;
+    margin-right: 25px;
     text-align: center;
 }
 
 #favorite-button {
     background-color: #DE0001;
+
 }
 
 
 #next-button {
     background-color: #FEDA15;
+   
+}
+.hide{
+    display: none;
+}
+
+.see{
+    display: block;
 }
 
 #button-div {
@@ -68,7 +81,7 @@
 .rotate {
     text-align: center;
     font-size: 100px;
-  animation: rotation 2s infinite linear;
+  animation: rotation 1.5s infinite linear;
   position: fixed;
   top: 25%;
   left: 46%;
