@@ -38,6 +38,9 @@ function updateFavoriteListItem(favorite) {
 
 }
 
+
+
+//changes the review value to be displayed as stars
 function appendStarRating(starRating, ratingEl) {
 
 
