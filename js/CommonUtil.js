@@ -94,7 +94,6 @@ function clearLocalStorage() {
 
 function loadNavBar() {
     loadLocalFile("./views/nav.html", function(html) {
-        console.log(html);
         $("#hangry-nav-bar").append(html);
     })
 }
