@@ -8,18 +8,15 @@ let baseURL = `${corsAnywhere}https://api.yelp.com/v3/`;
 
 let id = "wAVpMs0QtdzFFGhhjZAKHA";
 
-
-function getBusinessByLatLon(lat, lon, callback) {
+function getBusinessByLatLon(lat, lon, callback, errorCallback) {
     if (lat && lon) {
         let business = `businesses/search?latitude=${lat}&longitude=${lon}&limit=50&open_now=true`;
         let businessLatLon = `${baseURL}${business}`;
-        return baseFetchByGET(businessLatLon, callback);
+        return baseFetchByGET(businessLatLon, callback, errorCallback);
     } else {
         console.log("Lat and Long are required", lat, lon);
     }
-
 }
-
 
 //*
 /* Fetches a specific business by ID. 
@@ -38,6 +35,19 @@ async function getBusinessById(id, callbackFunction) {
 }
 
 //*
+/* src= https://www.yelp.com/developers/documentation/v3/business_reviews
+/* GET Reviews by Business ID
+/* @param {id} id the specific ID of the business -- cannot be null
+/* @param {callbackFunction} callback the function the data response should return to... typically to update your UI.
+/ */
+async function getReviewsByBusinessId(id, callbackFunction) {
+    if (id === undefined || id === "" || id === null) {} {
+        let businessIdURL = `${baseURL}businesses/${id}/reviews`;
+        return baseFetchByGET(businessIdURL, callbackFunction);
+    }
+}
+
+//*
 /* @param {completeURL} This is the complete URL, for example:
 /* https://api.yelp.com/v3/businesses/wAVpMs0QtdzFFGhhjZAKHA"  <--- returns specific business
 /* OR
@@ -47,50 +57,20 @@ async function getBusinessById(id, callbackFunction) {
 // so do not attempt two signatures in the function, such as callback(jsonData, 0). Only callback(jsonData) will work.
 // Use the 0 in the callback itself. 
 / */
-function baseFetchByGET(completeURL, callback) {
-    console.log(completeURL);
-    // build a request with the URL and add the headers including the Authorization
-    let request = new Request(completeURL, {
-        method: "GET",
-        headers: new Headers({
-            Authorization: "Bearer " + API_KEY,
-            "Content-Type": "application/json",
-            "X-Requested-With": "XMLHttpRequest",
-        }),
-    });
-    // fetch using the request above. Notice the naming (Request, Response)
-    fetch(request)
-        .then(response => response.json())
-        .then(responseJson => {
-            //the signature is named responseJson to know its the same response from the promose (.then()) above
-            // but then returned as the json.
-            callback(responseJson);
-        })
-        .catch(err => {
-            //this error is thrown above in the `throw new Error(response);`
-            // log it, and then re-throw it so it shows up better in chrome.
-            console.log(err);
-            throw err;
-        });
+function baseFetchByGET(completeURL, successCallback, errorCallback) {
+    $.ajax({
+        type: 'GET',
+        url: completeURL,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('Authorization', "Bearer " + API_KEY);
+            xhr.setRequestHeader('Content-Type', "application/json");
+            xhr.setRequestHeader('XMLHttpRequest', "Accept");
+        },
+        success: function(response) {
+            successCallback(response);
+        },
+        error: function(response) {
+            errorCallback(response.responseJSON);
+        }
+    })
 }
-
-// Leaving this here. This YelpAPI should never include any Jquery. It is strictly a YelpAPI.
-// $(document).ready(function() {
-//     console.log("hey, we are at the starting point of our app")
-//     if (navigator.geolocation) {
-//         console.log("we have an geolocator!")
-//         navigator.geolocation.getCurrentPosition(function(position) {
-//             console.log("the current postion is", position.coords.latitude)
-//             let lat = position.coords.latitude;
-//             let long = position.coords.longitude;
-
-//             $("#long").text(long);
-//             $("#lat").text(lat);
-//             getBusinessByLatLon(lat, long, loadRest)
-
-//         }, errorFunction);
-
-//     } else {
-//         alert('It seems like Geolocation, which is required for this page, is not enabled in your browser.');
-//     }
-// });

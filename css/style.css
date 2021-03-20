@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
-
 #hangry {
     font-size: 300%;
     text-align: center;
@@ -9,7 +8,7 @@
 }
 
 #business,
-#distance{
+#distance {
     float: left;
     font-size: 150%;
     font-family: 'Mukta', sans-serif;
@@ -24,7 +23,7 @@ body {
     font-size: 150%;
 }
 
-#title-div{
+#title-div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,6 +32,8 @@ body {
     padding: 10px;
     margin: 0px 10px;
 }
+
+
 /* 
 #distance{
     position: absolute;
@@ -47,8 +48,7 @@ body {
     margin-bottom: 5px;
     width: auto;
     height: 350px;
-    border-radius: 5px;
-    
+    border-radius: 15px;
 }
 
 #next-button,
@@ -63,26 +63,24 @@ body {
     margin-right: 25px;
     text-align: center;
     border-radius: 15px;
-    -webkit-box-shadow: 6px 6px 25px -5px rgba(0,0,0,0.44); 
-    box-shadow: 6px 6px 25px -5px rgba(0,0,0,0.44);
+    -webkit-box-shadow: 6px 6px 25px -5px rgba(0, 0, 0, 0.44);
+    box-shadow: 6px 6px 25px -5px rgba(0, 0, 0, 0.44);
     height: 95%;
 }
 
 #favorite-button {
     background-color: #DE0001;
-
 }
-
 
 #next-button {
     background-color: #FEDA15;
-   
 }
-.hide{
+
+.hide {
     display: none;
 }
 
-.see{
+.see {
     display: block;
 }
 
@@ -91,35 +89,31 @@ body {
     justify-content: center;
 }
 
-
 .rotate {
     text-align: center;
     font-size: 100px;
-  animation: rotation 1.5s infinite linear;
-  position: fixed;
-  top: 25%;
-  left: 46%;
-  right: auto;
+    animation: rotation 1.5s infinite linear;
+    position: fixed;
+    top: 25%;
+    left: 46%;
+    right: auto;
 }
 
 @keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
 }
 
-
 @media only screen and (max-width: 600px) {
-
     #business-image {
         height: 275px;
     }
-
     #next-button,
-    #favorite-button{
+    #favorite-button {
         padding: 5px 15px;
         height: 55%;
     }
@@ -129,4 +123,8 @@ body {
   .swiper-container {
     width: 600px;
     height: 300px;
+  }
+
+  #detailNav:hover{
+      color: black;
   }
