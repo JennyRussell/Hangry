@@ -15,7 +15,7 @@ window.onload = function updateDetails() {
 
 
     $(`#goBack`).click("container", function() {
-        window.location.href = `http://localhost:8080/favorites.html`;
+        window.location.href = `/favorites.html`;
     });
 
     // https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
