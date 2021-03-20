@@ -101,3 +101,32 @@ nextButtonEl.addEventListener("click", function(event) {
     //will load the next item from the list array
     
 })
+
+const swiper = new Swiper('.swiper-container', {
+    // Optional parameters
+
+  
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
+
+for (var i = 0; i < 10; i++) {
+    $('.swiper-wrapper').append('<div class="swiper-slide">Slide ' + i + '</div>');
+    updateBusinessInformation(businesses);
+ currentIndex++;
+
+}
+// And init swiper

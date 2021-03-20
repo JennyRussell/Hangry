@@ -86,3 +86,23 @@ function saveToLocalStorage(key, value) {
 function clearLocalStorage() {
     localStorage.clear();
 }
+
+/* <div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="photos[1]" id="business-image-1">
+        </div>
+        <div class="swiper-slide">
+         <img src="photos[2]" id="business-image-2">
+        </div>
+        <div class="swiper-slide">
+            <img src="photos[3]" id="business-image-3">
+        </div>
+        <div class="swiper-scrollbar"></div>
+    </div>
+</div> */
+
+const swiper1S = new Swiper('.swiper-container', {
+
+
+  });
