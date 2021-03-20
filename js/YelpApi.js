@@ -65,7 +65,7 @@ function baseFetchByGET(completeURL, successCallback, errorCallback) {
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', "Bearer " + API_KEY);
             xhr.setRequestHeader('Content-Type', "application/json");
-            // xhr.setRequestHeader('XMLHttpRequest', "Accept");
+            xhr.setRequestHeader('XMLHttpRequest', "Accept");
         },
         success: function(response) {
             successCallback(response);

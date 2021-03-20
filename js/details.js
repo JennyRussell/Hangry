@@ -26,6 +26,6 @@ window.onload = function updateDetails() {
     $("#detailName").text(detail.name);
     $("#detailImg").attr("src", detail.img_url);
     $("#detailPhone").text(detail.phone);
-    $("#detailAddress").text(detail.address);
+    $("#detailAddress").text(detail.address.join(", "));
     appendStarRating(detail.rating, $("#detailRating"));
 }
