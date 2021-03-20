@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
 
 #hangry {
     font-size: 300%;
@@ -11,6 +12,12 @@
 #distance{
     float: left;
     font-size: 150%;
+    font-family: 'Mukta', sans-serif;
+}
+
+body {
+    font-family: 'Mukta', sans-serif;
+    background-color: rgb(242, 246, 248);
 }
 
 #displayPhone {
@@ -39,6 +46,8 @@
     margin-bottom: 5px;
     width: auto;
     height: 350px;
+    border-radius: 5px;
+    
 }
 
 #next-button,
@@ -52,6 +61,10 @@
     margin-left: 25px;
     margin-right: 25px;
     text-align: center;
+    border-radius: 15px;
+    border: solid 0.5px rgba(0, 0, 0, 0.211);
+    -webkit-box-shadow: 6px 6px 25px -5px rgba(0,0,0,0.44); 
+    box-shadow: 6px 6px 25px -5px rgba(0,0,0,0.44);
 }
 
 #favorite-button {
@@ -96,3 +109,4 @@
     transform: rotate(359deg);
   }
 }
+
