@@ -18,16 +18,17 @@ function toBusinessObject(business) {
         "img_url": business.image_url,
         "location": business.location,
         "name": business.name,
-        "phone": business.phone,
+        "phone": business.display_phone,
         "rating": business.rating,
-        "businessURL": business.url
+        "businessURL": business.url,
+        "address": business.location.display_address
     }
 }
 
 //this function runs through each if the resturaunts when the next or favorite button is clicked
 function loadRest(response) {
     businesses = response.businesses;
-    //console.log(businesses);
+    console.log(businesses);
 
     //these hide the buttons until the data loads
     nextButtonEl.setAttribute("class", "see");
@@ -62,9 +63,10 @@ function indexSuccessCallback(coords) {
 
 // This is the entry point for the entire application.
 $(document).ready(function() {
-    console.log("hey, we are at the starting point of our app")
+    updateNavBar();
     loadNavBar();
-    //load previous localstorage for favorites.
+    console.log("hey, we are at the starting point of our app")
+        //load previous localstorage for favorites.
     let faves = getFromLocalStorage("favorites");
     if (faves) {
         businessesArray = faves;
