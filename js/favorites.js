@@ -8,7 +8,8 @@ function updateFavoriteListItem(favorite) {
 
     $("#favorite-container").attr("id", favorite.id);
     $(`#${favorite.id}`).click("container", function() {
-        window.location.href = `details.html?businessId=${favorite.id}`;
+
+        window.location.href = `/details.html?businessId=${favorite.id}`;
     });
 
     $("#business-image").attr("src", favorite.img_url);
