@@ -21,9 +21,6 @@ function updateFavoriteListItem(favorite) {
     $("#business").text(favorite.name);
     $("#business").attr("id", "business" + faveIndex);
 
-    $("#displayPhone").text(favorite.phone);
-    $("#displayPhone").attr("id", "displayPhone" + faveIndex);
-
     $("#rating").text(favorite.rating);
     $("#rating").attr("id", "rating" + faveIndex);
     appendStarRating(favorite.rating)
@@ -32,8 +29,6 @@ function updateFavoriteListItem(favorite) {
     faveIndex++;
 
 }
-
-
 
 //changes the review value to be displayed as stars
 function appendStarRating(starRating, ratingEl) {
