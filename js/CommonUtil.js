@@ -28,10 +28,12 @@ function defaultError(error) {
     }
 }
 
-function defaultSuccess(position) {
+function positionToLatLongCoordsObject(position) {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
-    return { "lat": lat, "lon": lon };
+    // you can reference this object as 
+    // consolelog(coords.lat)
+    return { "latitude": lat, "longitude": lon };
 }
 
 /**
@@ -61,28 +63,47 @@ function showGeoError(error, strErr) {
 /* let latLon = getcurrentLocationLatLong();
 /* then console.log(latLon.lat); and you will see 32.22222
 */
-
 function getLocation(successCallback, errorCallback) {
+    //verify the browser supports geolocation
     if (navigator.geolocation) {
+        //enforce that a successCallback, and errorCallback have been provided. 
         if (successCallback && errorCallback) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                successCallback(defaultSuccess(position))
+            // when the getCurrentPosition returns with a position
+            // convert it to a latLong object (from positionToLatLongObject()), 
+            // and return it to the success caller. 
+            navigator.geolocation.getCurrentPosition(position => {
+                successCallback(positionToLatLongCoordsObject(position))
             }, errorCallback);
         }
     } else {
         console.log("Geolocation is not supported by this browser.")
-        errorCallback("Geolocation is not supported by this browser.")
     }
 }
 
 function getFromLocalStorage(key) {
-    return localStorage.getItem(key);
+    return JSON.parse(localStorage.getItem(key));
 }
 
 function saveToLocalStorage(key, value) {
-    localStorage.setItem(key, value);
+    localStorage.setItem(key, JSON.stringify(value));
 }
 
 function clearLocalStorage() {
     localStorage.clear();
+}
+
+function loadNavBar() {
+    loadLocalFile("./views/nav.html", function(html) {
+        $("#hangry-nav-bar").append(html);
+    })
+}
+
+function loadLocalFile(filePath, successCallback) {
+    $.ajax({
+        url: filePath,
+        type: "GET",
+        beforeSend: function(xhr) { xhr.setRequestHeader('Content-Type', 'text/html; charset=utf-8'); },
+        success: function(response) { successCallback(response); },
+        error: function() { alert('probably a cors problem?') }
+    });
 }

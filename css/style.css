@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
 #hangry {
     font-size: 300%;
     text-align: center;
@@ -8,51 +8,113 @@
 }
 
 #business,
-#distance{
+#distance {
     float: left;
-    font-size: 200%;
+    font-size: 150%;
+    font-family: 'Mukta', sans-serif;
+}
+
+body {
+    font-family: 'Mukta', sans-serif;
+    background-color: rgb(242, 246, 248);
 }
 
 #displayPhone {
-    font-size: 200%;
+    font-size: 150%;
 }
 
-#title-div{
+#title-div {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding: 10px;
+    margin: 0px 10px;
 }
+
+
+/* 
+#distance{
+    position: absolute;
+    left: 47%;
+} */
 
 #business-image {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
     width: auto;
-    height: 400px;
+    height: 350px;
+    border-radius: 5px;
 }
 
 #next-button,
 #favorite-button {
     border: none;
     color: white;
-    padding: 10px 25px;
+    padding: 10px 35px;
     text-align: center;
     text-decoration: none;
-    font-size: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 18px;
+    margin-left: 25px;
+    margin-right: 25px;
     text-align: center;
+    border-radius: 15px;
+    -webkit-box-shadow: 6px 6px 25px -5px rgba(0, 0, 0, 0.44);
+    box-shadow: 6px 6px 25px -5px rgba(0, 0, 0, 0.44);
+    height: 95%;
 }
 
 #favorite-button {
     background-color: #DE0001;
 }
 
-
 #next-button {
     background-color: #FEDA15;
+}
+
+.hide {
+    display: none;
+}
+
+.see {
+    display: block;
 }
 
 #button-div {
     display: flex;
     justify-content: center;
+}
+
+.rotate {
+    text-align: center;
+    font-size: 100px;
+    animation: rotation 1.5s infinite linear;
+    position: fixed;
+    top: 25%;
+    left: 46%;
+    right: auto;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #business-image {
+        height: 275px;
+    }
+    #next-button,
+    #favorite-button {
+        padding: 5px 15px;
+        height: 55%;
+    }
 }
