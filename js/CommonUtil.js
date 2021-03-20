@@ -93,12 +93,11 @@ function clearLocalStorage() {
 }
 
 function loadNavBar() {
-    // $("#hangry-nav-bar1").html('<object type="text/html" data="views/nav.html" ></object>');
     loadLocalFile("./views/nav.html", function(html) {
+        console.log(html);
         $("#hangry-nav-bar").append(html);
     })
 }
-
 
 function loadLocalFile(filePath, successCallback) {
     $.ajax({
@@ -106,6 +105,6 @@ function loadLocalFile(filePath, successCallback) {
         type: "GET",
         beforeSend: function(xhr) { xhr.setRequestHeader('Content-Type', 'text/html; charset=utf-8'); },
         success: function(response) { successCallback(response); },
-        error: function() { alert('bummer') }
+        error: function() { alert('probably a cors problem?') }
     });
 }

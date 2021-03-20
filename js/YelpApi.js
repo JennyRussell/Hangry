@@ -8,17 +8,15 @@ let baseURL = `${corsAnywhere}https://api.yelp.com/v3/`;
 
 let id = "wAVpMs0QtdzFFGhhjZAKHA";
 
-
 function getBusinessByLatLon(lat, lon, callback, errorCallback) {
     if (lat && lon) {
-        let business = `businesses/search?latitude=${lat}&longitude=${lon}`;
+        let business = `businesses/search?latitude=${lat}&longitude=${lon}&limit=50&open_now=true`;
         let businessLatLon = `${baseURL}${business}`;
         return baseFetchByGET(businessLatLon, callback, errorCallback);
     } else {
         console.log("Lat and Long are required", lat, lon);
     }
 }
-
 
 //*
 /* Fetches a specific business by ID. 
@@ -49,10 +47,6 @@ async function getReviewsByBusinessId(id, callbackFunction) {
     }
 }
 
-
-
-
-
 //*
 /* @param {completeURL} This is the complete URL, for example:
 /* https://api.yelp.com/v3/businesses/wAVpMs0QtdzFFGhhjZAKHA"  <--- returns specific business
@@ -80,24 +74,3 @@ function baseFetchByGET(completeURL, successCallback, errorCallback) {
         }
     })
 }
-
-// Leaving this here. This YelpAPI should never include any Jquery. It is strictly a YelpAPI.
-// $(document).ready(function() {
-//     console.log("hey, we are at the starting point of our app")
-//     if (navigator.geolocation) {
-//         console.log("we have an geolocator!")
-//         navigator.geolocation.getCurrentPosition(function(position) {
-//             console.log("the current postion is", position.coords.latitude)
-//             let lat = position.coords.latitude;
-//             let long = position.coords.longitude;
-
-//             $("#long").text(long);
-//             $("#lat").text(lat);
-//             getBusinessByLatLon(lat, long, loadRest)
-
-//         }, errorFunction);
-
-//     } else {
-//         alert('It seems like Geolocation, which is required for this page, is not enabled in your browser.');
-//     }
-// });
