@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
 
 #hangry {
     font-size: 300%;
@@ -11,6 +12,12 @@
 #distance{
     float: left;
     font-size: 150%;
+    font-family: 'Mukta', sans-serif;
+}
+
+body {
+    font-family: 'Mukta', sans-serif;
+    background-color: rgb(242, 246, 248);
 }
 
 #displayPhone {
@@ -19,7 +26,8 @@
 
 #title-div{
     display: flex;
-    justify-content:space-between;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     position: relative;
     padding: 10px;
@@ -39,6 +47,8 @@
     margin-bottom: 5px;
     width: auto;
     height: 350px;
+    border-radius: 5px;
+    
 }
 
 #next-button,
@@ -52,6 +62,10 @@
     margin-left: 25px;
     margin-right: 25px;
     text-align: center;
+    border-radius: 15px;
+    -webkit-box-shadow: 6px 6px 25px -5px rgba(0,0,0,0.44); 
+    box-shadow: 6px 6px 25px -5px rgba(0,0,0,0.44);
+    height: 95%;
 }
 
 #favorite-button {
@@ -96,3 +110,18 @@
     transform: rotate(359deg);
   }
 }
+
+
+@media only screen and (max-width: 600px) {
+
+    #business-image {
+        height: 275px;
+    }
+
+    #next-button,
+    #favorite-button{
+        padding: 5px 15px;
+        height: 55%;
+    }
+    
+  }

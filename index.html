@@ -13,6 +13,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -21,14 +23,12 @@
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <img class="h12 w-12" src="./images/hamburgerLogo.png" alt="hamburger">
+                        <img class="h-12 w-15" src="./images/hamburgerLogo.png" alt="hamburger">
                     </div>
-                    <div class="hidden md:block">
+                    <div class="">
                         <div class="ml-10 flex items-baseline space-x-4">
                             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                             <a href="#" class="bg-red-600 text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
-
-                            <a href="#" class="text-gray-900 hover:bg-red-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Restaurants</a>
 
                             <a href="./favorites.html" class="text-gray-900 hover:bg-red-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Favorites</a>
 
@@ -41,20 +41,24 @@
 
                 </div>
 
+
                 <h1 id="hangry">Hangry</h1>
             </div>
         </div>
     </nav>
 
-    <img src="" id="business-image">
-    <div id="button-div">
-        
-        <button id="next-button" type="button" class="hide"><span style="font-size: 48px;"><i class="fas fa-times size 7x"></i></span></button>
+    
         <div id="title-div">
             <h1 id="business"></h1>
             <h1 id="distance"></h1>
             <h1 id="displayPhone"></h1>
         </div>
+      <img src="" id="business-image">
+   
+    <div id="button-div">
+        
+        <button id="next-button" type="button" class="hide"><span style="font-size: 48px;"><i class="fas fa-times size 7x"></i></span></button>
+
         <button id="favorite-button" type="button" class="hide"><span style="font-size: 48px;"><i class="fas fa-heart"></i></span></button>
     </div>
 
@@ -63,7 +67,9 @@
 
         </span>
 
-    <!-- <script src="js/script.js"></script> -->
+    
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="js/YelpApi.js"></script>
     <script src="js/CommonUtil.js"></script>
