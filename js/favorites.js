@@ -5,8 +5,6 @@ let timer;
 let favoriteHtml;
 
 function updateFavoriteListItem(favorite) {
-    console.log(favorite.id)
-
 
     $("#favorite-container").attr("id", favorite.id);
     $(`#${favorite.id}`).click("container", function() {
@@ -57,6 +55,7 @@ function loadFavoritesFromLocalStorage() {
 
 function loadFavoritesPage() {
     loadNavBar();
+    updateNavBar();
     loadFavoritesFromLocalStorage();
     addFavoriteToFavoritesList();
 }
@@ -79,4 +78,7 @@ function addFavoriteToFavoritesList() {
 
     });
 }
-loadFavoritesPage();
+
+$(document).ready(function() {
+    loadFavoritesPage();
+});

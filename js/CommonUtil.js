@@ -96,6 +96,8 @@ function loadNavBar() {
     loadLocalFile("./views/nav.html", function(html) {
         $("#hangry-nav-bar").append(html);
     })
+
+    updateNavBar();
 }
 
 function loadLocalFile(filePath, successCallback) {
@@ -106,4 +108,65 @@ function loadLocalFile(filePath, successCallback) {
         success: function(response) { successCallback(response); },
         error: function() { alert('probably a cors problem?') }
     });
+}
+
+
+function setNavElementInactive(element) {
+    $(element).removeClass("bg-red-600 text-white px-3 py-2 rounded-md text-sm font-medium");
+    $(element).addClass("text-gray-900 hover:bg-red-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium");
+
+}
+
+function setNavElementActive(element) {
+    $(element).removeClass("text-gray-900 hover:bg-red-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium");
+    $(element).addClass("bg-red-600 text-white px-3 py-2 rounded-md text-sm font-medium");
+}
+
+function updateNavBar() {
+    console.log(window.location.href);
+    let currentURL = window.location.href;
+    if (currentURL.includes("index")) {
+        setInterval(() => {
+            setNavElementInactive($("#faveNav"));
+            setNavElementInactive($("#detailNav"));
+            setNavElementActive($("#homeNav"));
+        }, 150)
+    }
+
+    if (currentURL.includes("favorites")) {
+
+        setInterval(() => {
+            setNavElementInactive($("#homeNav"));
+            setNavElementInactive($("#detailNav"));
+            setNavElementActive($("#faveNav"));
+        }, 150)
+    }
+    if (currentURL.includes("details")) {
+
+        setInterval(() => {
+            setNavElementInactive($("#homeNav"));
+            setNavElementInactive($("#faveNav"));
+            setNavElementActive($("#detailNav"));
+        }, 150)
+    }
+}
+
+
+//changes the review value to be displayed as stars
+function appendStarRating(starRating, ratingEl) {
+
+
+    let fullStar = starRating.toString().split(".")[0];
+    let halfStar = starRating.toString().split(".")[1];
+
+
+    if (fullStar) {
+        for (let i = 0; i < fullStar; i++) {
+            $(ratingEl).append($('<i class="fa fa-star">'));
+        }
+    }
+    if (halfStar) {
+        console.log(halfStar);
+        $(ratingEl).append($('<i class="fa fa-star-half">'));
+    }
 }
