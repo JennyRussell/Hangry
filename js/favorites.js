@@ -4,11 +4,6 @@ let timer;
 
 let favoriteHtml;
 
-function imAwesome(response) {
-
-    console.log(response);
-}
-
 function updateFavoriteListItem(favorite) {
     console.log(favorite.id)
 
@@ -48,7 +43,6 @@ function appendStarRating(starRating, ratingEl) {
     let halfStar = starRating.toString().split(".")[1];
 
 
-    console.log(fullStar);
     if (fullStar) {
         for (let i = 0; i < fullStar; i++) {
             $(ratingEl).append($('<i class="fa fa-star">'));
@@ -82,6 +76,7 @@ function addFavoriteToFavoritesList() {
             favoriteHtml = html;
         }
     }).then(html => {
+
         favorites.forEach(fave => {
             $("#faveList").append(html);
             updateFavoriteListItem(fave);
