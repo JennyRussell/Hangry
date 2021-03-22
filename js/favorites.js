@@ -27,8 +27,6 @@ function updateFavoriteListItem(favorite) {
     faveIndex++;
 }
 
-
-
 function loadFavoritesFromLocalStorage() {
     favorites = getFromLocalStorage("favorites");
 }
