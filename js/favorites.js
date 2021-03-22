@@ -5,12 +5,10 @@ let timer;
 let favoriteHtml;
 
 function updateFavoriteListItem(favorite) {
-    console.log(favorite.id)
-
 
     $("#favorite-container").attr("id", favorite.id);
     $(`#${favorite.id}`).click("container", function() {
-        window.location.href = `details.html?businessId=${favorite.id}`;
+        window.location.href = `/details.html?businessId=${favorite.id}`;
     });
 
     $("#business-image").attr("src", favorite.img_url);
@@ -27,7 +25,6 @@ function updateFavoriteListItem(favorite) {
     let ratingEl = $("#rating" + faveIndex)
     appendStarRating(favorite.rating, ratingEl);
     faveIndex++;
-
 }
 
 //changes the review value to be displayed as stars
@@ -57,6 +54,7 @@ function loadFavoritesFromLocalStorage() {
 
 function loadFavoritesPage() {
     loadNavBar();
+    updateNavBar();
     loadFavoritesFromLocalStorage();
     addFavoriteToFavoritesList();
 }
@@ -79,4 +77,7 @@ function addFavoriteToFavoritesList() {
 
     });
 }
-loadFavoritesPage();
+
+$(document).ready(function() {
+    loadFavoritesPage();
+});

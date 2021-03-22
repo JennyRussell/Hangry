@@ -1,9 +1,10 @@
 // YELP API is specific for ONLY the YELP Rest API and should not contain any jquery or dom editing.
 const API_KEY =
-    "27pO528tZIXKQa99yJd-KLZ93h6DM1t4kSykH9UkZ0IdbsEc_ELP1wmYNi54Y83892iN20ex53HQtokoXHVb1aa3_qRVUI47VIUT7MNinJNLLpcggtNv1atWwrVKYHYx";
-const CLIENT_ID = "cdcxCdVgpGDur80CjemkRg";
+    "hhe7kT5DSjU6fJ1Y-vy5b8XRAh-JF8H1DqYugVodo9Vdp4xEbbmlVFahbdsdRk90-tNM_7dUnFtQ3oyY94Imfsbu9umTF_5sp-xhO8U0JtfhQxZwszHq3kTeeihMYHYx";
+const CLIENT_ID = "dyeKawOLsqUZdRX7B35S4Q";
 
-let corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
+//let corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
+let corsAnywhere = 'http://localhost:8080/';
 let baseURL = `${corsAnywhere}https://api.yelp.com/v3/`;
 
 let id = "wAVpMs0QtdzFFGhhjZAKHA";
@@ -64,7 +65,7 @@ function baseFetchByGET(completeURL, successCallback, errorCallback) {
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', "Bearer " + API_KEY);
             xhr.setRequestHeader('Content-Type', "application/json");
-            // xhr.setRequestHeader('XMLHttpRequest', "Accept");
+            xhr.setRequestHeader('XMLHttpRequest', "Accept");
         },
         success: function(response) {
             successCallback(response);

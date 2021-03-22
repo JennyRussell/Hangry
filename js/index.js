@@ -18,16 +18,17 @@ function toBusinessObject(business) {
         "img_url": business.image_url,
         "location": business.location,
         "name": business.name,
-        "phone": business.phone,
+        "phone": business.display_phone,
         "rating": business.rating,
-        "businessURL": business.url
+        "businessURL": business.url,
+        "address": business.location.display_address
     }
 }
 
 //this function runs through each if the resturaunts when the next or favorite button is clicked
 function loadRest(response) {
     businesses = response.businesses;
-    //console.log(businesses);
+    console.log(businesses);
 
     //these hide the buttons until the data loads
     nextButtonEl.setAttribute("class", "see");
@@ -48,7 +49,7 @@ function updateBusinessInformation(businesses) {
 }
 
 function errorFunction(err) {
-    console.log("say hello");
+    console.log("say hello", err);
 }
 
 // (businesses[currentIndex].distance * 0.00062137119).toFixed(1) + "mi";
@@ -62,9 +63,10 @@ function indexSuccessCallback(coords) {
 
 // This is the entry point for the entire application.
 $(document).ready(function() {
-    console.log("hey, we are at the starting point of our app")
+    updateNavBar();
     loadNavBar();
-    //load previous localstorage for favorites.
+    console.log("hey, we are at the starting point of our app")
+        //load previous localstorage for favorites.
     let faves = getFromLocalStorage("favorites");
     if (faves) {
         businessesArray = faves;
@@ -103,4 +105,34 @@ nextButtonEl.addEventListener("click", function(event) {
         businessImageEl.src = ""
     }
     //will load the next item from the list array
+    
 })
+
+const swiper = new Swiper('.swiper-container', {
+    // Optional parameters
+
+  
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
+
+for (var i = 0; i < 10; i++) {
+    $('.swiper-wrapper').append('<div class="swiper-slide">Slide ' + i + '</div>');
+    updateBusinessInformation(businesses);
+ currentIndex++;
+
+}
+// And init swiper
