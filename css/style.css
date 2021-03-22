@@ -117,14 +117,13 @@ body {
         padding: 5px 15px;
         height: 55%;
     }
-    
-  }
+}
 
-  .swiper-container {
+.swiper-container {
     width: 600px;
     height: 300px;
-  }
+}
 
-  #detailNav:hover{
-      color: black;
-  }
+#detailNav:hover {
+    color: black;
+}
