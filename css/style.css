@@ -10,8 +10,17 @@
 #business,
 #distance {
     float: left;
-    font-size: 150%;
     font-family: 'Mukta', sans-serif;
+}
+
+#business {
+    font-size: 200%;
+    font-weight: 700;
+}
+
+#distance {
+    color: darkgray;
+    font-size: 120%;
 }
 
 body {
@@ -20,7 +29,8 @@ body {
 }
 
 #displayPhone {
-    font-size: 150%;
+    font-size: 120%;
+    color: #DE0001;
 }
 
 #title-div {
