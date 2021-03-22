@@ -23,10 +23,8 @@ function errorVenueDetailCallback() {
 }
 
 function fsSuccessCallback(response) {
-    let stopSearchWhenFound = false;
     response.response.venues.forEach(venue => {
-        if (currentDetailName === venue.name && !stopSearchWhenFound) {
-            stopSearchWhenFound = true;
+        if (currentDetailName === venue.name) {
             getVenueDetails(venue.id, successVenueDetailCallback, errorVenueDetailCallback);
         }
     })
