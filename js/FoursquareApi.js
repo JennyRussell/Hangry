@@ -1,13 +1,15 @@
-const CLIENT4S_ID = "TSTXMVDKIC4DS2OOJGDEPJHGFEJMACWRPXJKGOKDTXQOXJVQ";
-const CLIENT_SECRET = "0SS0KJKAHWFBYZ0XUSYYZT5MWT3GGCAHTD3NZPSXGAIPO3JI";
+// const CLIENT4S_ID = "TSTXMVDKIC4DS2OOJGDEPJHGFEJMACWRPXJKGOKDTXQOXJVQ";
+const CLIENT4S_ID = "RPLGUR1LRW0SNGQHN1HTG3QOOQVLDVL1NZJHEW42OQ4N01P4";
+// const CLIENT_SECRET = "0SS0KJKAHWFBYZ0XUSYYZT5MWT3GGCAHTD3NZPSXGAIPO3JI";
+const CLIENT_SECRET = "PYIHLJLXEU3HQDRQH2H0FSRSPLQQUDETXP4G5OEKYE05VTVV";
 
-// let corsAnywhereFS = 'https://cors-anywhere.herokuapp.com/';
-let corsAnywhereFS = "";
-
+// let corsAnywhereFS = 'http://localhost:8081/';
+let corsAnywhereFS = 'https://cors-anywhere.herokuapp.com/';
 
 let baseURL4S = "https://api.foursquare.com/v2/";
 if (!IS_PROD) {
-    baseURL4S = `${corsAnywhere}${baseURL}`;
+    baseURL4S = `${corsAnywhereFS}${baseURL4S}`;
+    console.log(baseURL4S);
 }
 
 
