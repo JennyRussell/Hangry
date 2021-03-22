@@ -5,8 +5,11 @@ const CLIENT_ID = "dyeKawOLsqUZdRX7B35S4Q";
 
 //let corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
 let corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
-let baseURL = `${corsAnywhere}https://api.yelp.com/v3/`;
 
+let baseURL = `https://api.yelp.com/v3/`;
+if (!IS_PROD) {
+    baseURL = `${corsAnywhere}${baseURL}`;
+}
 let id = "wAVpMs0QtdzFFGhhjZAKHA";
 
 function getBusinessByLatLon(lat, lon, callback, errorCallback) {

@@ -1,6 +1,5 @@
 let currentIndex = 0;
 let favoritesArray = [];
-var businessesArray = [];
 //this is a fix to prevent loadRest to keep adding event listeners;
 var didListenersLoad = false;
 
@@ -87,7 +86,7 @@ $(document).ready(function() {
     console.log("hey, we are at the starting point of our app")
     let faves = getFromLocalStorage("favorites");
     if (faves) {
-        businessesArray = faves;
+        favoritesArray = faves;
     }
     getLocation(indexSuccessCallback, errorFunction);
 });
