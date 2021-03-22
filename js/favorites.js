@@ -8,7 +8,12 @@ function updateFavoriteListItem(favorite) {
 
     $("#favorite-container").attr("id", favorite.id);
     $(`#${favorite.id}`).click("container", function() {
-        window.location.href = `/details.html?businessId=${favorite.id}`;
+        if (IS_PROD) {
+            window.location.href = `/Hangry/details.html?businessId=${favorite.id}`;
+        } else {
+            window.location.href = `/details.html?businessId=${favorite.id}`;
+        }
+
     });
 
     $("#business-image").attr("src", favorite.img_url);
@@ -39,7 +44,6 @@ function loadFavoritesPage() {
 }
 
 function addFavoriteToFavoritesList() {
-    // /Users/jenny/Desktop/group-project-1/Hangry/views/nav.html
     $.ajax({
         type: 'GET',
         url: "views/favorite.html",

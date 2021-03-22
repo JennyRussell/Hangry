@@ -23,8 +23,10 @@ function errorVenueDetailCallback() {
 }
 
 function fsSuccessCallback(response) {
+    let isFoundVenue = false;
     response.response.venues.forEach(venue => {
-        if (currentDetailName === venue.name) {
+        if (currentDetailName === venue.name && !isFoundVenue) {
+            isFoundVenue = true;
             getVenueDetails(venue.id, successVenueDetailCallback, errorVenueDetailCallback);
         }
     })
