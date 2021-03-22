@@ -14,34 +14,30 @@
     <title>Details</title>
 </head>
 
-<body class="bg-gray-900">
+<body>
     <div id="hangry-nav-bar"></div>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <header class="text-red-500 text-center">Hangry</header>
-    <section class="bg-yellow-400">
+    <section>
 
-        <container id="">
-            <div class="p-10">
+        <container>
+            <div class="p-10 flex justify-center">
                 <!--Card 1-->
-                <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg p-2 m-2 border-red-500 border-4 rounded-2xl bg-yellow-200">
                     <img id="detailImg" class="w-full">
                     <div class="px-6 py-4">
                         <div id="detailName" class="font-bold text-xl mb-2">Restaurant</div>
                         <p id="detailPhone" class="text-gray-700 text-base"></p>
                         <p id="detailAddress" class="text-gray-700 text-base"></p>
-                        <p id="detailRating" class="text-gray-700 text-base"></p>
+                        <p id="detailRating" class="text-red-500 text-base"></p>
                         <p id="detailLikes" class="text-gray-700 text-base"></p>
                     </div>
                 </div>
             </div>
         </container>
     </section>
-    <div class="bg-red-500" id="details">
-        <h2 id="details" class="text-center">Details</h2>
-    </div>
     <br>
     <div class="text-center" id="back">
-        <button id="goBack" type="back" class="border-2 border-red-400 bg-yellow-400">Back to Favorites</button>
+        <button id="goBack" type="back" class="bg-red-600 text-white px-3 py-2 rounded-md text-sm font-medium">Back to Favorites</button>
     </div>
 
 
