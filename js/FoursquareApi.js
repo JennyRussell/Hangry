@@ -15,7 +15,7 @@ function getVenuesByLatLon(lat, lon, venueNameQuery, successCallback, errorCallb
     const today = moment();
     let formattedDate = today.format("YYYYMMDD");
     const venueSearch4S = "venues/search";
-    let completeURL = `${corsAnywhereFS}${baseURL4S}${venueSearch4S}?ll=${lat},${lon}&client_id=${CLIENT4S_ID}&client_secret=${CLIENT_SECRET}&limit=300&v=${formattedDate}&query=${venueNameQuery}`;
+    let completeURL = `${baseURL4S}${venueSearch4S}?ll=${lat},${lon}&client_id=${CLIENT4S_ID}&client_secret=${CLIENT_SECRET}&limit=300&v=${formattedDate}&query=${venueNameQuery}`;
     return baseFetchByGET(completeURL, null, successCallback, errorCallback);
 };
 
