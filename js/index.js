@@ -54,6 +54,7 @@ function errorFunction(err) {
 
 // (businesses[currentIndex].distance * 0.00062137119).toFixed(1) + "mi";
 function indexSuccessCallback(coords) {
+    saveToLocalStorage("userLocation", coords);
 
     $("#long").text(coords.longitude);
     $("#lat").text(coords.latitude);
@@ -105,34 +106,34 @@ nextButtonEl.addEventListener("click", function(event) {
         businessImageEl.src = ""
     }
     //will load the next item from the list array
-    
+
 })
 
 const swiper = new Swiper('.swiper-container', {
     // Optional parameters
 
-  
+
     // If we need pagination
     pagination: {
-      el: '.swiper-pagination',
+        el: '.swiper-pagination',
     },
-  
+
     // Navigation arrows
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
     },
-  
+
     // And if we need scrollbar
     scrollbar: {
-      el: '.swiper-scrollbar',
+        el: '.swiper-scrollbar',
     },
-  });
+});
 
-for (var i = 0; i < 10; i++) {
-    $('.swiper-wrapper').append('<div class="swiper-slide">Slide ' + i + '</div>');
-    updateBusinessInformation(businesses);
- currentIndex++;
+// for (var i = 0; i < 10; i++) {
+//     $('.swiper-wrapper').append('<div class="swiper-slide">Slide ' + i + '</div>');
+//     updateBusinessInformation(businesses);
+//  currentIndex++;
 
-}
+// }
 // And init swiper

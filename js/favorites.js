@@ -29,25 +29,6 @@ function updateFavoriteListItem(favorite) {
 
 }
 
-//changes the review value to be displayed as stars
-function appendStarRating(starRating, ratingEl) {
-
-
-    let fullStar = starRating.toString().split(".")[0];
-    let halfStar = starRating.toString().split(".")[1];
-
-
-    if (fullStar) {
-        for (let i = 0; i < fullStar; i++) {
-            $(ratingEl).append($('<i class="fa fa-star">'));
-        }
-    }
-    if (halfStar) {
-        console.log(halfStar);
-        $(ratingEl).append($('<i class="fa fa-star-half">'));
-    }
-}
-
 
 
 function loadFavoritesFromLocalStorage() {

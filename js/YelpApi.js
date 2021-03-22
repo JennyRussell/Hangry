@@ -4,7 +4,7 @@ const API_KEY =
 const CLIENT_ID = "dyeKawOLsqUZdRX7B35S4Q";
 
 //let corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
-let corsAnywhere = 'http://localhost:8080/';
+let corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
 let baseURL = `${corsAnywhere}https://api.yelp.com/v3/`;
 
 let id = "wAVpMs0QtdzFFGhhjZAKHA";
@@ -13,7 +13,8 @@ function getBusinessByLatLon(lat, lon, callback, errorCallback) {
     if (lat && lon) {
         let business = `businesses/search?latitude=${lat}&longitude=${lon}&limit=50&open_now=true`;
         let businessLatLon = `${baseURL}${business}`;
-        return baseFetchByGET(businessLatLon, callback, errorCallback);
+        let authKey = "Bearer " + API_KEY
+        return baseFetchByGET(businessLatLon, authKey, callback, errorCallback);
     } else {
         console.log("Lat and Long are required", lat, lon);
     }
@@ -31,7 +32,8 @@ async function getBusinessById(id, callbackFunction) {
     } {
         let businessIdURL = `${baseURL}businesses/${id}`;
         console.log(businessIdURL);
-        return baseFetchByGET(businessIdURL, callbackFunction);
+        let authKey = "Bearer " + API_KEY
+        return baseFetchByGET(businessIdURL, authKey, callbackFunction);
     }
 }
 
@@ -44,34 +46,8 @@ async function getBusinessById(id, callbackFunction) {
 async function getReviewsByBusinessId(id, callbackFunction) {
     if (id === undefined || id === "" || id === null) {} {
         let businessIdURL = `${baseURL}businesses/${id}/reviews`;
-        return baseFetchByGET(businessIdURL, callbackFunction);
-    }
-}
+        let authKey = "Bearer " + API_KEY
 
-//*
-/* @param {completeURL} This is the complete URL, for example:
-/* https://api.yelp.com/v3/businesses/wAVpMs0QtdzFFGhhjZAKHA"  <--- returns specific business
-/* OR
-/* https://api.yelp.com/v3/search?latitude=32.2222&longitude=-118.2222` <--
-/* @param {completeURL} build the complete URL before sending in here, like in function getBusinessById
-/* @param {callback} this is the function that will be called back. You only get the JSON response as 1 parameter
-// so do not attempt two signatures in the function, such as callback(jsonData, 0). Only callback(jsonData) will work.
-// Use the 0 in the callback itself. 
-/ */
-function baseFetchByGET(completeURL, successCallback, errorCallback) {
-    $.ajax({
-        type: 'GET',
-        url: completeURL,
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader('Authorization', "Bearer " + API_KEY);
-            xhr.setRequestHeader('Content-Type', "application/json");
-            xhr.setRequestHeader('XMLHttpRequest', "Accept");
-        },
-        success: function(response) {
-            successCallback(response);
-        },
-        error: function(response) {
-            errorCallback(response.responseJSON);
-        }
-    })
+        return baseFetchByGET(businessIdURL, authKey, callbackFunction);
+    }
 }
