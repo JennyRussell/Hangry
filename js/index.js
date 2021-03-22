@@ -42,9 +42,8 @@ function loadRest(response) {
 
     for (var i = 0; i < 10; i++) {
         $('.swiper-wrapper').append('<div class="swiper-slide">Slide ' + i + '</div>');
-        updateBusinessInformation(businesses);
-        currentIndex++;
     }
+
 }
 
 function updateBusinessInformation(businesses) {

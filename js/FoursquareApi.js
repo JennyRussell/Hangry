@@ -1,9 +1,14 @@
 const CLIENT4S_ID = "TSTXMVDKIC4DS2OOJGDEPJHGFEJMACWRPXJKGOKDTXQOXJVQ";
 const CLIENT_SECRET = "0SS0KJKAHWFBYZ0XUSYYZT5MWT3GGCAHTD3NZPSXGAIPO3JI";
 
-let corsAnywhereFS = 'https://cors-anywhere.herokuapp.com/';
+// let corsAnywhereFS = 'https://cors-anywhere.herokuapp.com/';
+let corsAnywhereFS = "";
 
-const baseURL4S = "https://api.foursquare.com/v2/";
+
+let baseURL4S = "https://api.foursquare.com/v2/";
+if (!IS_PROD) {
+    baseURL4S = `${corsAnywhere}${baseURL}`;
+}
 
 
 function getVenuesByLatLon(lat, lon, venueNameQuery, successCallback, errorCallback) {
