@@ -32,7 +32,6 @@ function positionToLatLongCoordsObject(position) {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
     // you can reference this object as 
-    // consolelog(coords.lat)
     return { "latitude": lat, "longitude": lon };
 }
 
@@ -123,7 +122,6 @@ function setNavElementActive(element) {
 }
 
 function updateNavBar() {
-    console.log(window.location.href);
     let currentURL = window.location.href;
     if (currentURL.includes("index")) {
         setInterval(() => {
@@ -166,7 +164,35 @@ function appendStarRating(starRating, ratingEl) {
         }
     }
     if (halfStar) {
-        console.log(halfStar);
         $(ratingEl).append($('<i class="fa fa-star-half">'));
     }
+}
+
+//*
+/* @param {completeURL} This is the complete URL, for example:
+/* https://api.yelp.com/v3/businesses/wAVpMs0QtdzFFGhhjZAKHA"  <--- returns specific business
+/* OR
+/* https://api.yelp.com/v3/search?latitude=32.2222&longitude=-118.2222` <--
+/* @param {completeURL} build the complete URL before sending in here, like in function getBusinessById
+/* @param {callback} this is the function that will be called back. You only get the JSON response as 1 parameter
+// so do not attempt two signatures in the function, such as callback(jsonData, 0). Only callback(jsonData) will work.
+// Use the 0 in the callback itself. 
+/ */
+function baseFetchByGET(completeURL, authKey, successCallback, errorCallback) {
+    $.ajax({
+        type: 'GET',
+        url: completeURL,
+        beforeSend: function(xhr) {
+            if (authKey) {
+                xhr.setRequestHeader('Authorization', authKey);
+            }
+            xhr.setRequestHeader('Content-Type', "application/json");
+        },
+        success: function(response) {
+            successCallback(response);
+        },
+        error: function(response) {
+            errorCallback(response.responseJSON);
+        }
+    })
 }
