@@ -8,7 +8,6 @@ function updateFavoriteListItem(favorite) {
 
     $("#favorite-container").attr("id", favorite.id);
     $(`#${favorite.id}`).click("container", function() {
-
         window.location.href = `/details.html?businessId=${favorite.id}`;
     });
 
@@ -26,7 +25,6 @@ function updateFavoriteListItem(favorite) {
     let ratingEl = $("#rating" + faveIndex)
     appendStarRating(favorite.rating, ratingEl);
     faveIndex++;
-
 }
 
 //changes the review value to be displayed as stars
