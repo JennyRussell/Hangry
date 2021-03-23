@@ -1,7 +1,8 @@
+const IS_PROD = true;
 //**
 /* 
  * @param {distanceInMeters} distanceInMetres 
- * @return meters divided by miles. 
+ * @return meters divided by miles. git
  */
 function convertMetersToMiles(distanceInMetres) {
     return distanceInMetres * 0.000621371192;

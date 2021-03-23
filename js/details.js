@@ -23,14 +23,21 @@ function errorVenueDetailCallback() {
 }
 
 function fsSuccessCallback(response) {
+    let isFoundVenue = false;
     response.response.venues.forEach(venue => {
-        if (currentDetailName === venue.name) {
+        let venueFirstWord = currentDetailName.split(" ")[0];
+        if (venue.name.includes(venueFirstWord) && !isFoundVenue) {
+            isFoundVenue = true;
             getVenueDetails(venue.id, successVenueDetailCallback, errorVenueDetailCallback);
         }
     })
 }
 
+
 $(`#goBack`).click("container", function() {
+    if (IS_PROD) {
+        window.location.href = `/Hangry/favorites.html`;
+    }
     window.location.href = `/favorites.html`;
 });
 
