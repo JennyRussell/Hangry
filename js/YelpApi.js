@@ -1,16 +1,22 @@
 // YELP API is specific for ONLY the YELP Rest API and should not contain any jquery or dom editing.
-const API_KEY =
-    "hhe7kT5DSjU6fJ1Y-vy5b8XRAh-JF8H1DqYugVodo9Vdp4xEbbmlVFahbdsdRk90-tNM_7dUnFtQ3oyY94Imfsbu9umTF_5sp-xhO8U0JtfhQxZwszHq3kTeeihMYHYx";
+const API_KEY = "hhe7kT5DSjU6fJ1Y-vy5b8XRAh-JF8H1DqYugVodo9Vdp4xEbbmlVFahbdsdRk90-tNM_7dUnFtQ3oyY94Imfsbu9umTF_5sp-xhO8U0JtfhQxZwszHq3kTeeihMYHYx";
 const CLIENT_ID = "dyeKawOLsqUZdRX7B35S4Q";
 
 
-// let corsAnywhere = 'http://localhost:8081/';
+let localhost = "http://localhost:8082/";
 let corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
 
 
 let baseURL = `https://api.yelp.com/v3/`;
 if (!IS_PROD) {
+    baseURL = `${localhost}${baseURL}`;
+    console.log(baseURL);
+
+
+} else {
     baseURL = `${corsAnywhere}${baseURL}`;
+    console.log(baseURL);
+
 }
 let id = "wAVpMs0QtdzFFGhhjZAKHA";
 
