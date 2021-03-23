@@ -1,4 +1,4 @@
-const IS_PROD = true;
+const IS_PROD = false;
 //**
 /* 
  * @param {distanceInMeters} distanceInMetres 
@@ -180,19 +180,23 @@ function appendStarRating(starRating, ratingEl) {
 // Use the 0 in the callback itself. 
 / */
 function baseFetchByGET(completeURL, authKey, successCallback, errorCallback) {
+    console.log(completeURL);
     $.ajax({
         type: 'GET',
         url: completeURL,
         beforeSend: function(xhr) {
             if (authKey) {
                 xhr.setRequestHeader('Authorization', authKey);
+                xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest")
             }
             xhr.setRequestHeader('Content-Type', "application/json");
         },
         success: function(response) {
+            console.log(response);
             successCallback(response);
         },
         error: function(response) {
+            console.log(response);
             errorCallback(response.responseJSON);
         }
     })
