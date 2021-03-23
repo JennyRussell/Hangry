@@ -20,7 +20,8 @@ body {
 }
 
 #displayPhone {
-    font-size: 150%;
+    font-size: 120%;
+    color: #DE0001;
 }
 
 #title-div {
@@ -33,12 +34,10 @@ body {
     margin: 0px 10px;
 }
 
-
-/* 
-#distance{
-    position: absolute;
-    left: 47%;
-} */
+#distance {
+    color: darkgray;
+    font-size: 120%;
+}
 
 #business-image {
     display: block;
@@ -49,6 +48,11 @@ body {
     width: auto;
     height: 350px;
     border-radius: 15px;
+}
+
+#business {
+    font-size: 200%;
+    font-weight: 700;
 }
 
 #next-button,

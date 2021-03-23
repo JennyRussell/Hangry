@@ -4,6 +4,7 @@ let timer;
 
 let favoriteHtml;
 
+// clicking on one of the favorite items takes you to the Details page
 function updateFavoriteListItem(favorite) {
 
     $("#favorite-container").attr("id", favorite.id);
@@ -16,6 +17,7 @@ function updateFavoriteListItem(favorite) {
 
     });
 
+    // data from API is injected into DOM elements on details page
     $("#business-image").attr("src", favorite.img_url);
     $("#business-image").attr("id", "business-image" + faveIndex);
     $("#displayPhone").text(favorite.phone);
@@ -31,11 +33,13 @@ function updateFavoriteListItem(favorite) {
     appendStarRating(favorite.rating, ratingEl);
     faveIndex++;
 }
-
+//retrieves favorites from local storage
 function loadFavoritesFromLocalStorage() {
     favorites = getFromLocalStorage("favorites");
 }
 
+
+// function to load everything on the favorites page
 function loadFavoritesPage() {
     loadNavBar();
     updateNavBar();

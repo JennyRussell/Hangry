@@ -3,14 +3,20 @@ const API_KEY = "hhe7kT5DSjU6fJ1Y-vy5b8XRAh-JF8H1DqYugVodo9Vdp4xEbbmlVFahbdsdRk9
 const CLIENT_ID = "dyeKawOLsqUZdRX7B35S4Q";
 
 
-let corsAnywhere = "http://localhost:8082/";
-// let corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
+let localhost = "http://localhost:8082/";
+let corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
 
 
 let baseURL = `https://api.yelp.com/v3/`;
 if (!IS_PROD) {
+    baseURL = `${localhost}${baseURL}`;
+    console.log(baseURL);
+
+
+} else {
     baseURL = `${corsAnywhere}${baseURL}`;
     console.log(baseURL);
+
 }
 let id = "wAVpMs0QtdzFFGhhjZAKHA";
 

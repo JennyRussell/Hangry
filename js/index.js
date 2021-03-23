@@ -54,7 +54,7 @@ function updateBusinessInformation(businesses) {
 }
 
 function errorFunction(err) {
-    console.log("say hello", err);
+    console.log("error", err);
 }
 
 // (businesses[currentIndex].distance * 0.00062137119).toFixed(1) + "mi";

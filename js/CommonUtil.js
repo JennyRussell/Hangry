@@ -1,4 +1,4 @@
-const IS_PROD = false;
+const IS_PROD = true;
 //**
 /* 
  * @param {distanceInMeters} distanceInMetres 
